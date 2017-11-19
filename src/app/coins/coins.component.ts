@@ -1,11 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { CoinMarketCapService } from '../shared/services/coinmarketcap.service';
 
 @Component({
     selector: 'app-coins',
     templateUrl: './coins.component.html'
 })
 export class CoinsComponent implements OnInit {
-    constructor() { }
+    constructor(private coinMarketCapService: CoinMarketCapService) { }
 
-    ngOnInit() { }
+    coins = [];
+
+    ngOnInit() {
+        this.coinMarketCapService.getCoins()
+            .subscribe(res => {
+                this.coins = res;
+            });
+    }
 }
