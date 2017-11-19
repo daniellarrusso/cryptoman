@@ -10,7 +10,8 @@ export class CoinMarketCapService {
     private  url= 'https://api.coinmarketcap.com/v1/ticker/';
 
     getCoins()  {
-        return this.http.get(this.url)
+        const limit = '?convert=USD&limit=2000';
+        return this.http.get(this.url + limit)
             .map(result => result.json());
     }
 }

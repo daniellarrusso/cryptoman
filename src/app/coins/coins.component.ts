@@ -11,10 +11,22 @@ export class CoinsComponent implements OnInit {
 
     coins: Coin[];
 
+    refreshPrice() {
+        this.coins = null;
+        this.ngOnInit();
+    }
+
     ngOnInit() {
         this.coinMarketCapService.getCoins()
             .subscribe(res => {
                 this.coins = res;
             });
+    }
+
+    movement(value: number) {
+        if (value > 0) {
+            return 'green';
+        }
+        return 'red';
     }
 }

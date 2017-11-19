@@ -1,11 +1,17 @@
 <div class="row">
     <div class="col-sm-11">
-            <table  class="table table-responsive table-hover">
+        <button class="btn btn-primary" (click)="refreshPrice()"><span class="glyphicon glyphicon-refresh"></span> Refresh price</button>
+        <br />   
+        <br />  
+        <table  class="table table-responsive table-hover">
                     <tr>
                         <th>Rank</th>
                         <th>Name</th>
                         <th>Market Cap</th>
                         <th>Price</th>
+                        <th>1hr%</th>
+                        <th>24hr%</th>
+                        <th>Week%</th>
                         <th>Conversion</th>
                         <th>Input</th>
                     </tr>
@@ -14,6 +20,9 @@
                         <td><a [routerLink]="['/coin',coin.id]">{{ coin.name }}</a></td>
                         <td>{{ coin.market_cap_usd }}</td>
                         <td>{{ coin.price_usd | currency: "USD" :true:'1.2-2'}} </td>
+                        <td [style.color]="movement(coin.percent_change_1h)">{{ coin.percent_change_1h }} </td>
+                        <td [style.color]="movement(coin.percent_change_24dh)">{{ coin.percent_change_24h }} </td>
+                        <td [style.color]="movement(coin.percent_change_7d)">{{ coin.percent_change_7d }}</td>
                         <td>
                         <span *ngIf="coin.input">{{ coin.input * coin.price_usd | currency: "USD" :true:'1.2-2' }}</span>
                         <span *ngIf="!coin.input">{{ '0.00' | currency: "USD" :true:'1.2-2' }} </span>
