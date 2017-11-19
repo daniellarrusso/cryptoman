@@ -2,7 +2,9 @@
     <div class="col-sm-11">
         <button class="btn btn-primary" (click)="refreshPrice()"><span class="glyphicon glyphicon-refresh"></span> Refresh price</button>
         <br />   
-        <br />  
+        <br /> 
+        <div class="loading" *ngIf="!loaded"> 
+            </div> 
         <table  class="table table-responsive table-hover">
                     <tr>
                         <th>Rank</th>

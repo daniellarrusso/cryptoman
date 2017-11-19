@@ -10,9 +10,10 @@ export class CoinsComponent implements OnInit {
     constructor(private coinMarketCapService: CoinMarketCapService) { }
 
     coins: Coin[];
+    loaded: boolean;
 
     refreshPrice() {
-        this.coins = null;
+        this.loaded = false;
         this.ngOnInit();
     }
 
@@ -20,6 +21,7 @@ export class CoinsComponent implements OnInit {
         this.coinMarketCapService.getCoins()
             .subscribe(res => {
                 this.coins = res;
+                this.loaded = true;
             });
     }
 
