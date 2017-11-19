@@ -1,4 +1,25 @@
-
-<div *ngFor="let coin of coins">
-    {{ coin.name }} - {{ coin.price_usd }}
+<div class="row">
+    <div class="col-sm-11">
+            <table  class="table table-responsive table-hover">
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Market Cap</th>
+                        <th>Price</th>
+                        <th>Conversion</th>
+                        <th>Input</th>
+                    </tr>
+                    <tr *ngFor="let coin of coins">
+                        <td>{{ coin.rank }}</td>
+                        <td><a [routerLink]="['/coin',coin.id]">{{ coin.name }}</a></td>
+                        <td>{{ coin.market_cap_usd }}</td>
+                        <td>{{ coin.price_usd | currency: "USD" :true:'1.2-2'}} </td>
+                        <td>
+                        <span *ngIf="coin.input">{{ coin.input * coin.price_usd | currency: "USD" :true:'1.2-2' }}</span>
+                        <span *ngIf="!coin.input">{{ '0.00' | currency: "USD" :true:'1.2-2' }} </span>
+                        </td>
+                        <td><input style="width:150px;" class="form-control" [(ngModel)]="coin.input" /></td>
+                    </tr>
+                </table>
+    </div>
 </div>
