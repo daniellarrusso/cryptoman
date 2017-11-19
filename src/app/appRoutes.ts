@@ -3,8 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CoinsComponent } from './coins/coins.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: '', pathMatch: 'full' },
-    { path: '', component: CoinsComponent },
+    { path: '', redirectTo: '/coins', pathMatch: 'full' },
     { path: 'coins', component: CoinsComponent }
 ];
 
