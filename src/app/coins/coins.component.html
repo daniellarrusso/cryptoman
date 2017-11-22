@@ -23,7 +23,7 @@
                         <td>{{ coin.market_cap_usd }}</td>
                         <td>{{ coin.price_usd | currency: "USD" :true:'1.2-2'}} </td>
                         <td [style.color]="movement(coin.percent_change_1h)">{{ coin.percent_change_1h }} </td>
-                        <td [style.color]="movement(coin.percent_change_24dh)">{{ coin.percent_change_24h }} </td>
+                        <td [style.color]="movement(coin.percent_change_24h)">{{ coin.percent_change_24h }} </td>
                         <td [style.color]="movement(coin.percent_change_7d)">{{ coin.percent_change_7d }}</td>
                         <td>
                         <span *ngIf="coin.input">{{ coin.input * coin.price_usd | currency: "USD" :true:'1.2-2' }}</span>
