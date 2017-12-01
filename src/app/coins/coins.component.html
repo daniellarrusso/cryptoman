@@ -1,36 +1,52 @@
 <div class="row">
-    <div class="col-sm-11">
-        <button class="btn btn-primary" (click)="refreshPrice()"><span class="glyphicon glyphicon-refresh"></span> Refresh price</button>
-        <br />   
-        <br /> 
-        <div class="loading" *ngIf="!loaded"> 
-            </div> 
-        <table  class="table table-responsive table-hover">
-                    <tr>
-                        <th>Rank</th>
-                        <th>Name</th>
-                        <th>Market Cap</th>
-                        <th>Price</th>
-                        <th>1hr%</th>
-                        <th>24hr%</th>
-                        <th>Week%</th>
-                        <th>Conversion</th>
-                        <th>Input</th>
-                    </tr>
-                    <tr *ngFor="let coin of coins">
-                        <td>{{ coin.rank }}</td>
-                        <td><a [routerLink]="['/coin',coin.id]">{{ coin.name }}</a></td>
-                        <td>{{ coin.market_cap_usd }}</td>
-                        <td>{{ coin.price_usd | currency: "USD" :true:'1.2-2'}} </td>
-                        <td [style.color]="movement(coin.percent_change_1h)">{{ coin.percent_change_1h }} </td>
-                        <td [style.color]="movement(coin.percent_change_24h)">{{ coin.percent_change_24h }} </td>
-                        <td [style.color]="movement(coin.percent_change_7d)">{{ coin.percent_change_7d }}</td>
-                        <td>
-                        <span *ngIf="coin.input">{{ coin.input * coin.price_usd | currency: "USD" :true:'1.2-2' }}</span>
-                        <span *ngIf="!coin.input">{{ '0.00' | currency: "USD" :true:'1.2-2' }} </span>
-                        </td>
-                        <td><input style="width:150px;" class="form-control" [(ngModel)]="coin.input" /></td>
-                    </tr>
-                </table>
+    <div class="col-sm-12">
+        <button class="btn btn-primary" (click)="refreshPrice()">
+            <span class="glyphicon glyphicon-refresh"></span> Refresh price</button>
+        <br />
+        <br />
+        <div class="loading" *ngIf="!loaded">
+        </div>
+        <div class="table-responsive">
+
+
+            <table class="table table-condensed table-hover">
+                <tr>
+
+                    <th class="visible-xs">Name</th>
+                    <th class="hidden-xs">Name </th>
+                    <th>Price</th>
+                    <th>Conversion</th>
+                    <th class="hidden-xs">1hr%</th>
+                    <th class="hidden-xs">24hr%</th>
+                    <th class="hidden-xs">Week%</th>
+                    <th class="hidden-xs">Market Cap</th>
+                </tr>
+                <tr *ngFor="let coin of coins">
+
+                    <td class="visible-xs">
+                        <span class="badge">{{ coin.rank}}</span>
+                        <a [routerLink]="['/coin',coin.id]">{{ coin.symbol }}</a>
+                    </td>
+                    <td class="hidden-xs">
+                        <span class="badge">{{ coin.rank}}</span>
+                        <a [routerLink]="['/coin',coin.id]">{{ coin.name }}</a>
+                    </td>
+                    <td>{{ coin.price_usd | currency: "USD" :true:'1.2-2'}} 
+                        <br />=>
+                            <span *ngIf="coin.input">{{ coin.input * coin.price_usd | currency: "USD" :true:'1.2-2' }}</span>
+                            <span *ngIf="!coin.input">{{ '0.00' | currency: "USD" :true:'1.2-2' }} </span>
+                    </td>
+                    <td>
+                        <input style="max-width:150px;" class="form-control" [placeholder]="coin.symbol+ ' price'" [(ngModel)]="coin.input" />
+                        
+                    </td>
+                    <td class="hidden-xs" [style.color]="movement(coin.percent_change_1h)">{{ coin.percent_change_1h }} </td>
+                    <td class="hidden-xs" [style.color]="movement(coin.percent_change_24h)">{{ coin.percent_change_24h }} </td>
+                    <td class="hidden-xs" [style.color]="movement(coin.percent_change_7d)">{{ coin.percent_change_7d }}</td>
+                    <td class="hidden-xs">{{ coin.market_cap_usd | currency: "USD" :true:'1.2-2'}} </td>
+
+                </tr>
+            </table>
+        </div>
     </div>
 </div>

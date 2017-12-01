@@ -118,3 +118,8 @@
       transform: rotate(360deg);
     }
   }
+
+  table th {
+    width: auto !important;
+}
+
