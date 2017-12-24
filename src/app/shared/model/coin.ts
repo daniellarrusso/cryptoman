@@ -14,5 +14,6 @@ export class Coin {
     percent_change_7d: string;
     last_updated: string;
     price_converted: number;
+    market_cap_converted: number;
     input: number;
 }

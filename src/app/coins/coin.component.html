@@ -1,0 +1,10 @@
+<div *ngIf="coin">
+    {{coin.name }} <span class="text-muted">{{ coin.symbol }}</span> 
+    <br />
+    {{ coin.price_converted | currency: currency :true:'1.2-2' }}
+    <span [class]="arrow(coin.percent_change_24h)"> </span>{{ coin.percent_change_24h }}
+    <br />
+    <button (click)="goBack()" class="btn btn-default">Back</button>
+</div>
+
+
