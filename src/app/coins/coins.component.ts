@@ -40,7 +40,7 @@ export class CoinsComponent implements OnInit {
         this.ngOnInit();
     }
     valueChanged(newVal: Coin) {
-        this.route.navigate(['coin/' + newVal.id]);
+        this.coinSearch = newVal;
       }
 
     ngOnInit() {

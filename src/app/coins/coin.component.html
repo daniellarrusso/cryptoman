@@ -1,10 +1,16 @@
-<div *ngIf="coin">
-    {{coin.name }} <span class="text-muted">{{ coin.symbol }}</span> 
+<div *ngIf="search">
+    {{search.name }} <span class="text-muted">{{ search.symbol }}</span> 
     <br />
-    {{ coin.price_converted | currency: currency :true:'1.2-2' }}
-    <span [class]="arrow(coin.percent_change_24h)"> </span>{{ coin.percent_change_24h }}
-    <br />
-    <button (click)="goBack()" class="btn btn-default">Back</button>
+    {{ search.price_converted | currency: currency :true:'1.2-2' }}
+    <span [class]="arrow(search.percent_change_24h)"> </span>{{ search.percent_change_24h }}
 </div>
+
+<div *ngIf="coin">
+        {{coin.name }} <span class="text-muted">{{ coin.symbol }}</span> 
+        <br />
+        {{ coin.price_converted | currency: currency :true:'1.2-2' }}
+        <span [class]="arrow(coin.percent_change_24h)"> </span>{{ coin.percent_change_24h }}
+        <button (click)="goBack()" class="btn btn-default">Back</button>
+    </div>
 
 

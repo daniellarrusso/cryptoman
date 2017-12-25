@@ -1,8 +1,5 @@
-<div class="row">
-    <div class="col-sm-12">
-        <button class="btn btn-primary" (click)="refreshPrice()">
-            <span class="glyphicon glyphicon-refresh"></span> Refresh price</button>
-       
+   
+    
       
         <div class="loading" *ngIf="!loaded">
         </div>
@@ -21,28 +18,30 @@
                 </div>
                 </div>
 
-                <div class="panel-body">
-                <app-coin *ngIf="coinSearch" [coin]="coinSearch"></app-coin>
+                <div *ngIf="coinSearch" class="panel-body">
+                <app-coin [search]="coinSearch"></app-coin>
+                
            </div>
        </div>
     
      
-    <div class="row">
+    <div *ngIf="globalMarketCap" class="row">
         <div class="col-sm-4">
-                <div *ngIf="globalMarketCap">
+               
                      <label>Total Market Cap</label>  <span class="label label-default">{{ globalMarketCap  | currency: selectedCurrency :true:'1.2-2' }}</span> 
-                   </div>
+       
         </div>
     </div>
 
         <div  class="table-responsive">
-
             <table class="table table-condensed table-hover">
                 <tr>
-
                     <th class="visible-xs">Name</th>
                     <th class="hidden-xs">Name </th>
-                    <th>Price</th>
+                    <th>Price <div class="pull-right">
+                            <button class="btn btn-primary btn-sm" (click)="refreshPrice()">
+                                    <span class="glyphicon glyphicon-refresh"></span></button>
+                    </div></th>
                     <th>Conversion</th>
                     <th class="hidden-xs">1hr%</th>
                     <th class="hidden-xs">24hr%</th>
@@ -76,5 +75,4 @@
                 </tr>
             </table>
         </div>
-    </div>
-</div>
+    

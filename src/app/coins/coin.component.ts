@@ -18,10 +18,10 @@ export class CoinComponent implements OnInit {
         private activatedRoute: ActivatedRoute
     ) { }
 
-    @Input() coin: Coin;
+    @Input() search: Coin;
 
     currency: string;
-    linkCoin: Coin;
+    coin: Coin;
     selectedCurrency: string;
     loaded: boolean;
 
@@ -35,6 +35,7 @@ export class CoinComponent implements OnInit {
         this.location.back();
     }
     ngOnInit() {
+        if (!this.search) {
         this.currencyService.currency.subscribe(curr => {
             this.currency = curr.toLowerCase();
             this.activatedRoute.params.subscribe(params => {
@@ -46,4 +47,5 @@ export class CoinComponent implements OnInit {
                     });
                 });
         });
+    }
 }}
