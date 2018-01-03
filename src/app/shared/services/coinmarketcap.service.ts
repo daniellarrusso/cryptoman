@@ -18,7 +18,7 @@ export class CoinMarketCapService {
     }
 
     getCoins(currency: string): Observable<[Coin]>  {
-        const urlExtension = 'ticker/?convert=' + currency + '&limit=2000';
+        const urlExtension = 'ticker/?convert=' + currency + '&limit=500';
         return this.http.get(this.url + urlExtension)
             .map(result => result.json());
     }
