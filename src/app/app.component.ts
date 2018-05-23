@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   constructor(private currencyService: CurrencyService) { }
   title = 'Crypto Manager';
 
-  selectedCurrency = 'USD';
+  selectedCurrency: string;
   currencies: any[];
 
   ngOnInit() {

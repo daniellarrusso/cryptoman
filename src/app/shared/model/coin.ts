@@ -5,7 +5,7 @@ export class Coin {
     rank: number;
     price_usd: number;
     price_btc: number;
-    twenty4hr_volume_usd: string;
+    '24h_volume_usd': string;
     market_cap_usd: string;
     available_supply: string;
     total_supply: string;

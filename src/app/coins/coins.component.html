@@ -47,6 +47,7 @@
                     <th class="hidden-xs">24hr%</th>
                     <th class="hidden-xs">Week%</th>
                     <th class="hidden-xs">Market Cap</th>
+                    <th>24h volume</th>
                 </tr>
                 <tr *ngFor="let coin of coins">
 
@@ -56,7 +57,9 @@
                     </td>
                     <td class="hidden-xs">
                         <span class="badge">{{ coin.rank}}</span>
+                        <img src="https://files.coinmarketcap.com/static/widget/coins_legacy/16x16/{{ coin.id }}.png">
                         <a [routerLink]="['/coin',coin.id]">{{ coin.name }}</a>
+                        
                     </td>
                     <td>{{ coin.price_converted | currency: selectedCurrency :true:'1.2-2'}} 
                         <br />=>
@@ -71,7 +74,10 @@
                     <td><span [class]="movement(coin.percent_change_24h)"></span> {{ coin.percent_change_24h }} </td>
                     <td class="hidden-xs"><span [class]="movement(coin.percent_change_7d)"></span> {{ coin.percent_change_7d }} </td>
                     <td class="hidden-xs">{{ coin.market_cap_converted | currency: selectedCurrency :true:'1.2-2'}} </td>
-
+                    <td>{{ coin['24h_volume_usd'] | currency: selectedCurrency :true:'1.2-2' }}</td>
+                    <!-- <td>
+                        <img class="sparkline" alt="sparkline" src="https://s2.coinmarketcap.com/generated/sparklines/{{coin.id}}.png">
+                    </td> -->
                 </tr>
             </table>
         </div>
